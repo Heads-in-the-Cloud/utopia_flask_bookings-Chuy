@@ -2,8 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_REPO = "chuymedina96/utopia_flask_bookings"
-        CONTAINER_NAME = "utopia-flask-flights"
-        BUILD_NUMBER = 1
+        CONTAINER_NAME = "utopia-flask-bookings"
     }
     stages {
         stage('SCM Checkout'){
@@ -35,7 +34,7 @@ pipeline {
             steps {
                 // sh 'docker stop $CONTAINER_NAME'
                 // sh 'docker rm $CONTAINER_NAME'
-                sh 'docker run --name $CONTAINER_NAME -d -p 5001:5001 $DOCKER_HUB_REPO'
+                sh 'docker run --name $CONTAINER_NAME -d -p 5002:5002 $DOCKER_HUB_REPO'
                 sh 'echo "Latest image/code deployed"'
             }
         }
