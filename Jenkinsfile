@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_REPO = "chuymedina96/utopia_flask_bookings"
-        CONTAINER_NAME = "utopia-flask-bookings"
+        CONTAINER_NAME = "utopia-flask-bookingse"
     }
     stages {
         stage('SCM Checkout'){
@@ -24,7 +24,13 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                //  Pushing Image to Repositor
+                //  Pushing Image to Repository
+                sh 'docker push $DOCKER_HUB_REPO:latest'
+                echo "Image built and pushed to repository"
+            }
+        }
+        stage('Deploy') {
+            steps {
                 // sh 'docker stop $CONTAINER_NAME'
                 // sh 'docker rm $CONTAINER_NAME'
                 sh 'docker run --name $CONTAINER_NAME -d -p 5002:5002 $DOCKER_HUB_REPO'
