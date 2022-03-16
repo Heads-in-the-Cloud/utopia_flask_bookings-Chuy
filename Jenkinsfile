@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_REPO = "chuymedina96/utopia_flask_bookings"
-        CONTAINER_NAME = "utopia-flask-bookingse"
+        CONTAINER_NAME = "utopia-flask-bookings"
     }
     stages {
         stage('SCM Checkout'){
